@@ -11,7 +11,7 @@ class App extends Component {
           <h1>Quote Maker</h1>
         </div>
         <hr />
-        <QuoteForm />
+        <QuoteForm props={this.props} />
         { this.props.quotes.map( quote => <QuoteCard quote={quote} key={quote.id} store={this.props} />) }
         {console.log('this.props= ', this.props)}
       </div>
