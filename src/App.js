@@ -1,4 +1,7 @@
 import React, { Component } from 'react';
+import QuoteForm from './components/QuoteForm'
+import QuoteCard from './components/QuoteCard'
+import { connect } from 'react-redux'
 
 class App extends Component {
   render() {
@@ -8,14 +11,16 @@ class App extends Component {
           <h1>Quote Maker</h1>
         </div>
         <hr />
-        {/*
-          TODO:
-
-          Render QuoteForm and Quotes Components
-         */}
+        <QuoteForm />
+        { this.props.quotes.map( quote => <QuoteCard quote={quote} key={quote.id} store={this.props} />) }
+        {console.log('this.props= ', this.props)}
       </div>
     );
   }
 }
 
-export default App;
+const mapStateToProps = state => {
+  return { quotes: state.quotes  }
+}
+
+export default connect(mapStateToProps)(App);
